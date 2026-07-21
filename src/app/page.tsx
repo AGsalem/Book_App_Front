@@ -16,6 +16,7 @@ export default function Home() {
         if (res.ok) {
           const mess = await res.json()
           setMes(mess.mes)
+          localStorage.setItem("nameOfUser",mes)
           setTimeout(() => {
             router.push(`${mes}`)
           }, 10);

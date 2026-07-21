@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import { useEffect, useState } from "react"
 import { useRouter } from 'next/navigation';
 import BookFile from "./file"
@@ -34,7 +34,17 @@ export default function () {
             }
         };
         auth()
-    })
+    }, [])
+    const savedData = localStorage.getItem("book");
+    let booksArray = [];
+    if (savedData) {
+        try {
+            booksArray = JSON.parse(savedData);
+            if (!Array.isArray(booksArray)) {
+                booksArray = [booksArray];
+            }
+        } catch (error) { booksArray = []; }
+    }
     const newBook = async () => {
         try {
             const data = await fetch("/back/new", {
@@ -45,16 +55,19 @@ export default function () {
                 credentials: 'include'
             }
             );
+            const pro: any = { name, sell, type, discription }
             const res = await data.json()
-            console.log(res)
             if (data.ok) {
                 if (res.res) {
                     setfile(true)
                     setMes(res.res)
                     setErr(res.message)
                     setData(false)
+                    booksArray.push(pro);
+                    localStorage.setItem("book", JSON.stringify(booksArray))
 
-                } console.log(res)
+                }
+                // console.log(res)
                 if (!data.ok) {
                     setErr(res.message)
                 }
@@ -85,7 +98,7 @@ export default function () {
                             placeholder="name of book"
                             className="mb-4 placeholder: font-bold border-amber-50 border  rounded-2xl text-xl p-4" />
                         <h2 className='text-2xl'>sell</h2>
-                        <select className="mb-4 mt-4 placeholder:font-bold border-amber-50 border rounded-2xl text-xl p-4 bg-blue-600 text-white [&>option]:bg-blue-500  [&>option]:text-white" onChange={(e: any) => { setSell(e.target.value) }} >
+                        <select className="mb-4 mt-4 placeholder:font-bold border-amber-50 border rounded-2xl text-xl p-4  text-white [&>option]:bg-blue-500  [&>option]:text-white" onChange={(e: any) => { setSell(e.target.value) }} >
                             <option value="20"  >20 (Default)</option>
                             <option value="40" >40</option>
                             <option value="60" >60</option>

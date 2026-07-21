@@ -62,15 +62,13 @@ export default function User({ params }: a) {
                         <div className="bg-teal-600 gap-4 p-5 flex flex-col md:flex-row justify-center items-center text-lg md:text-xl font-bold rounded-2xl mb-8">
                             <Link href={`${username}/setting`} >Setting  </Link>
                             <Link href={"shop"} > See Shop </Link>
-                            <Link href={"#"} > My books </Link>
                             <Link href={"#"}>My Purchases</Link>
                             {uorc && (
-                                <div className="flex flex-col md:flex-row transition-all duration-300 ease-out justify-center items-center gap-3 md:gap-5">
-                                    <div className="flex flex-col md:flex-row p-2 font-bold rounded-3xl gap-4 md:gap-2 justify-center items-center">
-                                        <div className="hover:-translate-y-1.5 hover:scale-[1.02] transition-all duration-500 ease-out">
-                                            <Link href={`${username}/new`}>add new book</Link>
-                                        </div>
-                                    </div>
+                                <div className="  justify-center items-center gap-3 md:gap-5 flex flex-col md:flex-row p-2 font-bold rounded-3xl ">
+
+                                                <Link className="hover:-translate-y-1.5 hover:scale-[1.02]  transition-all duration-300 ease-out" href={`${username}/new`}>add new book</Link>
+                                                <Link  className='hover:-translate-y-1.5 hover:scale-[1.02]  transition-all duration-300 ease-out'href={`${username}/book`}>My books</Link>
+
                                 </div>
                             )}
                         </div>
