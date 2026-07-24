@@ -28,6 +28,8 @@ export default function SINGUP() {
                 }
                 if (mess.mes) {
                     setmes(mess.mes)
+                    localStorage.setItem("nameOfUser", nameofsearch)
+
                     setTimeout(() => {
                         router.push(`/${nameofsearch}`)
                     }, 3000);

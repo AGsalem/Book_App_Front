@@ -35,10 +35,10 @@ export default function Hed() {
                             </a></div>
                     </div>
                     <div className="hover:-translate-y-1.5 hover:scale-[1.02]:  hover:shadow-2xl transition-all duration-500 ease-out">
-                        <a target="_blank" href="http://github.com/agsalem/Book-App-Back">see source code BackEnd</a>
+                        <a target="_blank" href="http://github.com/agsalem/Book-App-Back"> source code BackEnd</a>
                     </div>
                     <div className="hover:-translate-y-1.5 hover:scale-[1.02]:  hover:shadow-2xl transition-all duration-500 ease-out">
-                        <a target="_blank" href="http://github.com/agsalem/Book-App-Front">see source code FrontEnd</a>
+                        <a target="_blank" href="http://github.com/agsalem/Book-App-Front"> source code FrontEnd</a>
                     </div>
                 </div>
             </div>

@@ -2,11 +2,11 @@
 import { useEffect, useState } from "react"
 import { useRouter } from 'next/navigation';
 import BookFile from "./file"
-export default function () {
+export default function newBook() {
     const router = useRouter()
     const [name, setName] = useState("") as any
     const [sell, setSell] = useState<number>(20)
-    const [type, setType] = useState("") as any
+    const [type, setType] = useState<string>('Action')
     const [err, setErr] = useState("") as any
     const [ISE, setIse] = useState("") as any
     const [mes, setMes] = useState("") as any
@@ -16,24 +16,35 @@ export default function () {
     const [authError, setAuthError] = useState<any>("")
 
     useEffect(() => {
-        const auth = async () => {
-            const data = await fetch("/back", {
-                credentials: 'include'
-            })
-            const res = await data.json()
-            if (res.mes) {
-                console.log(res)
-                // setData(true)
-            }
-            else if (res.error) {
-                setAuthError(res.error)
-                setTimeout(() => {
-                    router.push("/login")
+        const returnName = localStorage.getItem("book")
+        if (returnName) {
+            setfile(true)
+            setData(false)
 
-                }, 4000);
-            }
-        };
-        auth()
+        }
+        else {
+            const auth = async () => {
+                const data = await fetch("/back", {
+                    credentials: 'include'
+                })
+                const res = await data.json()
+                if (res.mes) {
+                    // console.log(res)
+                    // setData(true)
+                }
+                else if (res.error) {
+                    setAuthError(res.error)
+                    setData(false)
+                    setfile(false)
+
+                    setTimeout(() => {
+                        router.push("/login")
+
+                    }, 4000);
+                }
+            };
+            auth()
+        }
     }, [])
     const savedData = localStorage.getItem("book");
     let booksArray = [];
@@ -104,12 +115,14 @@ export default function () {
                             <option value="60" >60</option>
                             <option value="80" >80</option>
                         </select>
-                        <input type="text"
-                            onChange={(e: any) => { setType(e.target.value) }}
-                            value={type}
-                            placeholder="type of book"
-                            className="mb-4 placeholder: font-bold border-amber-50 border  rounded-2xl text-xl p-4" />
-
+                        <h2 className='text-2xl'>Type Of Book</h2>
+                        <select className="mb-4 mt-4 placeholder:font-bold border-amber-50 border rounded-2xl text-xl p-4  text-white [&>option]:bg-blue-500  [&>option]:text-white"
+                            onChange={(e: any) => { setType(e.target.value) }} >
+                            <option value="Action">Action (Default)</option>
+                            <option value="Horror" >Horror</option>
+                            <option value="Comedy" >Comedy</option>
+                            <option value="Romance" >Romance</option>
+                        </select>
                         <textarea name="" id="" rows={8} placeholder="discription"
                             value={discription}
                             onChange={(e: any) => { setDesc(e.target.value) }}
@@ -132,7 +145,8 @@ export default function () {
                             <BookFile />
                         </>
                     )
-                }
+                }{
+                    authError&&(<div className="text-4xl`"> (401) </div>)}
 
             </div>
         </>

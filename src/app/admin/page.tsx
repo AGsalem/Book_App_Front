@@ -11,6 +11,8 @@ export default function Dashboard() {
     const [sing, setSign] = useState(true)
     const [admin, setAD] = useState(false)
     const [ban, setBan] = useState(false)
+    const [Books, setBooks] = useState("") as any
+
     const data = async () => {
         try {
             const res = await fetch('/back/page/admin', {
@@ -21,7 +23,7 @@ export default function Dashboard() {
             })
             const mess: any = await res.json()
             if (res.ok) {
-                // console.log(mess)
+                console.log(mess)
                 setName("")
                 setPass("")
                 setId("")
@@ -29,6 +31,9 @@ export default function Dashboard() {
                 setBan(mess.ban)
                 setAD(true)
                 setuser(mess.AllUsers)
+                setBooks(mess.AllBook)
+                console.log(mess)
+                console.log(mess)
                 useEffect(() => {
                     const aa = setInterval(() => { window.location.reload(); }, 100)
                     return () => {
@@ -88,52 +93,72 @@ export default function Dashboard() {
                                 <h1>All users</h1>
                             </div>
                             <br />
-                            <div className="w-full overflow-x-auto text-sm md:text-base px-4">
-                                <table className="w-max mx-auto">
-                                    <tbody>
+                            <div className="w-full overflow-x-auto px-4 max-w-full">
+                                <table className="w-full border-collapse text-left text-sm md:text-base rounded-xl overflow-hidden border border-slate-700">
+                                    <thead className="bg-slate-800 text-slate-200 border-b border-slate-700">
                                         <tr>
-                                            <th>
-                                                <td className="p-5">id</td>
-                                            </th>
-                                            <th>
-                                                <td className="p-2 "> name</td>
-                                            </th>
-                                            <th>
-                                                <td className="p-2 ">pass</td>
-                                            </th>
-                                            <th>
-                                                <td className="p-2 ">_______created in_______</td>
-                                            </th>
-                                            <th>
-                                                <td>name of search</td>
-                                            </th>
-                                            <th>
-                                                <td className="p-2 ">cash</td></th>
-                                            <th>
-                                                <td className="p-2 ">user OR seels</td>
-                                            </th>
+                                            <th className="p-4 font-semibold tracking-wider">id</th>
+                                            <th className="p-4 font-semibold tracking-wider">name</th>
+                                            <th className="p-4 font-semibold tracking-wider">pass</th>
+                                            <th className="p-4 font-semibold tracking-wider">created in</th>
+                                            <th className="p-4 font-semibold tracking-wider">name of search</th>
+                                            <th className="p-4 font-semibold tracking-wider">cash</th>
+                                            <th className="p-4 font-semibold tracking-wider">user OR seels</th>
                                         </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-700 bg-slate-900/50 text-slate-300">
+                                        {user.map((a: any) => (
+                                            <tr key={a.id} className="hover:bg-slate-800/60 transition-colors duration-200">
+                                                <td className="p-4 whitespace-nowrap font-medium text-slate-400">{a.id}</td>
+                                                <td className="p-4 whitespace-nowrap">{a.username}</td>
+                                                <td className="p-4 whitespace-nowrap max-w-[150px] truncate">{a.password}</td>
+                                                <td className="p-4 whitespace-nowrap">{a.created_at}</td>
+                                                <td className="p-4 whitespace-nowrap">{a.nameofsearch}</td>
+                                                <td className="p-4 whitespace-nowrap text-green-400">{a.cash}</td>
+                                                <td className="p-4 whitespace-nowrap">{a.userorsells}</td>
+                                            </tr>
+                                        ))}
                                     </tbody>
-                                    {user.map((a: any) => (<>
-                                        <tr key={a.id}>
-                                            <td>{a.id}</td>
-                                            <td>{a.username}</td>
-                                            <td>{a.password}</td>
-                                            <td>{a.created_at}</td>
-                                            <td>{a.nameofsearch}</td>
-                                            <td>{a.cash}</td>
-                                            <td>{a.userorsells}</td>
-
-                                        </tr></>
-
-                                    ))}
-
                                 </table>
                             </div>
                             <div className="bg-amber-500 h-4 text-amber-500 mt-4 mb-4 rounded-4xl"></div>
-                            <div>
-                                <h1></h1>
+                            <div className="text-2xl font-bold flex justify-center ">
+                                <h1>All users</h1>
                             </div>
+                            <br />
+                            <div className="w-full overflow-x-auto px-4 max-w-full">
+                                <table className="w-full border-collapse text-left text-sm md:text-base rounded-xl overflow-hidden border border-slate-700">
+                                    <thead className="bg-slate-800 text-slate-200 border-b border-slate-700">
+                                        <tr>
+                                            <th className="p-4 font-semibold tracking-wider">id book</th>
+                                            <th className="p-4 font-semibold tracking-wider">id user</th>
+                                            <th className="p-4 font-semibold tracking-wider">name</th>
+                                            <th className="p-4 font-semibold tracking-wider">price</th>
+                                            <th className="p-4 font-semibold tracking-wider">type</th>
+                                            <th className="p-4 font-semibold tracking-wider">description</th>
+                                            <th className="p-4 font-semibold tracking-wider">file name</th>
+                                            <th className="p-4 font-semibold tracking-wider">created_at</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-700 bg-slate-900/50 text-slate-300  ">
+                                        {Books.map((index: any) => (
+                                            <tr key={index.id} >
+                                                <td className="p-4 whitespace-nowrap font-medium text-slate-400">{index.id}</td>
+                                                <td className="p-4 whitespace-nowrap">{index.id_user}</td>
+                                                <td className="p-4 whitespace-nowrap">{index.name}</td>
+                                                <td className="p-4 whitespace-nowrap text-amber-400">{index.sell}</td>
+                                                <td className="p-4 whitespace-nowrap">{index.type}</td>
+                                                <td className="p-4 max-w-xs truncate">{index.discription}</td>
+                                                <td className="p-4 whitespace-nowrap">{index.filename}</td>
+                                                <td className="p-4 whitespace-nowrap">{index.created_at}</td>
+                                            </tr>
+                                        ))}
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            { }
                         </>}
                     </>}
             </div>

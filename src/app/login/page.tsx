@@ -27,8 +27,9 @@ export default function SINGUP() {
             if (res.ok) {
                 if (mess.res) {
                     setmes(mess.message)
+                    localStorage.setItem('nameOfUser',mess.res)
                     setTimeout(() => {
-                        router.push(`/${mess.res}`)
+                        router.push(`${mess.res}`)
                     }, 100);
                 }
                 if (mess.mes) {

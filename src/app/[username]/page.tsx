@@ -1,9 +1,9 @@
 'use client'
+import {type a}from'./layout'
 import { use, useState, useEffect } from "react";
 import Cash from "./data/cash";
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
-export type a = { params: Promise<{ username: string }> };
 export default function User({ params }: a) {
     const [err, seterr] = useState("") as any
     const [name, setname] = useState("") as any
@@ -67,7 +67,7 @@ export default function User({ params }: a) {
                                 <div className="  justify-center items-center gap-3 md:gap-5 flex flex-col md:flex-row p-2 font-bold rounded-3xl ">
 
                                                 <Link className="hover:-translate-y-1.5 hover:scale-[1.02]  transition-all duration-300 ease-out" href={`${username}/new`}>add new book</Link>
-                                                <Link  className='hover:-translate-y-1.5 hover:scale-[1.02]  transition-all duration-300 ease-out'href={`${username}/book`}>My books</Link>
+                                                <Link  className='hover:-translate-y-1.5 hover:scale-[1.02]  transition-all duration-300 ease-out'href={`${username}/mybooks`}>My books</Link>
 
                                 </div>
                             )}

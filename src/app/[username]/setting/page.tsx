@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import Logout from "./logout"
 import Update from "./update"
 import { useRouter } from "next/navigation"
-import AddBook from "../book/page"
+import AddBook from "../mybooks/page"
 export default function Setting() {
     const [mes, setMes] = useState<any>("")
     const [err, setErr] = useState("")
@@ -48,7 +48,7 @@ export default function Setting() {
                                 <div className="flex justify-center items-center">
                                     <Update />
                             </div>
-                                <AddBook></AddBook>
+                                {/* <AddBook></AddBook> */}
                             </div>
                         </div >
                         <br />
