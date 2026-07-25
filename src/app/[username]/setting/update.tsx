@@ -11,7 +11,7 @@ export default function Update() {
     const router = useRouter()
     const data = async () => {
         try {
-            const res = await fetch("/back/update", {
+            const res = await fetch("https://book-app-back-theta.vercel.app/update", {
                 method: "PUT",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },

@@ -15,7 +15,7 @@ export default function SINGUP() {
     const [err, setErr] = useState<any>("")
     const Login = async () => {
         try {
-            const res = await fetch("/back/login", {
+            const res = await fetch("https://book-app-back-theta.vercel.app/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),

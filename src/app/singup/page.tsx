@@ -13,7 +13,7 @@ export default function SINGUP() {
     const router = useRouter()
     const create = async () => {
         try {
-            const res = await fetch("/back/signup", {
+            const res = await fetch("https://book-app-back-theta.vercel.app/signup", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password, nameofsearch, uorc }),
