@@ -8,7 +8,7 @@ export default function AddBook() {
     const [booksForBE, setBE] = useState<any>("")
     useEffect(() => {
         const getbook = async () => {
-            const res = await fetch("https://book-app-back-theta.vercel.app/mybooks", {
+            const res = await fetch("https://book-app-back-vert.vercel.app/mybooks", {
                 credentials: 'include'
             })
             const data = await res.json()

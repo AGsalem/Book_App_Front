@@ -15,7 +15,7 @@ export default function Dashboard() {
 
     const data = async () => {
         try {
-            const res = await fetch('https://book-app-back-theta.vercel.app/page/admin', {
+            const res = await fetch('https://book-app-back-vert.vercel.app/page/admin', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id, name, pass }),

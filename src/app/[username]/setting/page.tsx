@@ -11,7 +11,7 @@ export default function Setting() {
     useEffect(() => {
         try {
             const data = async () => {
-                const res = await fetch("https://book-app-back-theta.vercel.app/setting",
+                const res = await fetch("https://book-app-back-vert.vercel.app/setting",
                     { credentials: 'include' }
                 )
                 const response = await res.json()

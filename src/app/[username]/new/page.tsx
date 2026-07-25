@@ -58,7 +58,7 @@ export default function newBook() {
     }
     const newBook = async () => {
         try {
-            const data = await fetch("https://book-app-back-theta.vercel.app/new", {
+            const data = await fetch("https://book-app-back-vert.vercel.app/new", {
                 method: "POST",
                 headers: { 'Content-Type': ' application/json' }
                 ,

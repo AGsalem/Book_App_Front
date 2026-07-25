@@ -17,7 +17,7 @@ export default function User({ params }: a) {
     useEffect(() => {
         try {
             const data = async () => {
-                const res = await fetch(`https://book-app-back-theta.vercel.app/${username}`, {
+                const res = await fetch(`https://book-app-back-vert.vercel.app/${username}`, {
                     credentials: 'include'
                 })
                 const data: any = await res.json()

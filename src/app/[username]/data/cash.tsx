@@ -5,7 +5,7 @@ export default function Cash() {
     const [count, setCount] = useState("")
     useEffect(() => {
         const cash = async () => {
-            const res = await fetch('https://book-app-back-theta.vercel.app/cash', {
+            const res = await fetch('https://book-app-back-vert.vercel.app/cash', {
                 credentials: 'include'
             })
             const data = await res.json()
