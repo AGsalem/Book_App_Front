@@ -23,7 +23,7 @@ export default function BookFile() {
         }
         const formData = new FormData();
         formData.append("file", file);
-        const res = await fetch("/back/addBook", {
+        const res = await fetch("https://book-app-back-vert.vercel.app/addBook", {
             method: 'POST',
             credentials: 'include',
             body: formData
