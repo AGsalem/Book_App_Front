@@ -41,8 +41,8 @@ export default function Home() {
           </div>
         </div>
         <Hed />
-        <div className='mt-4 mb-5 '>
-          <Image className='rounded-3xl w-full h-[500]' src={book} alt=''></Image>
+        <div className='mt-4 mb-5 flex justify-center'>
+          <Image className='rounded-3xl w-full h-[700] ' src={book} alt=''></Image>
         </div>
         <div className='bg-indigo-600 p-3 mb-10 font-bold rounded-3xl mt-5 text-l md:text-2xl '>
           Get free 100 pound  to buy books <Link href={'/login'} className='text-cyan-400'> sing now</Link>
