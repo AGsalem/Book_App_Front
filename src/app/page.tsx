@@ -45,9 +45,9 @@ export default function Home() {
           <Image className='rounded-3xl w-full h-[700] ' src={book} alt=''></Image>
         </div>
         <div className='bg-indigo-600 p-3 mb-10 font-bold rounded-3xl mt-5 text-l md:text-2xl '>
-          Get free 100 pound  to buy books <Link href={'/login'} className='text-cyan-400'> sing now</Link>
+          Get free 100 pound When you  <Link href={'/login'} className='text-cyan-400'> sing in </Link>
         </div>
-        <br />
+        <br /> 
         <section className="mt-auto ">
           <footer className=" rounded-2xl  border-t border-slate-800  ">
             <div className=" w-full  bg-[#1E293B] mx-auto  sm:flex-row items-center min-h-full flex flex-col p-9 justify-between text-sm text-slate-400 gap-4">
